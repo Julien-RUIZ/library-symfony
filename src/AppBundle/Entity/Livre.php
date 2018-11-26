@@ -47,7 +47,7 @@ class Livre
      */
     private $titre;
 
-    /**
+    /** un join entre livre et auteur
      * @ORM\ManyToOne(targetEntity="Auteur")
      */
     private $auteur;
