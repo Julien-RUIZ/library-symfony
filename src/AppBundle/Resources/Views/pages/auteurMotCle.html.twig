@@ -1,0 +1,27 @@
+{% extends '@App/base/base.html.twig' %}
+
+
+{% block content %}
+
+        {% if reserch is empty %}
+            {{ 'Entrer un mot' }}
+            <a href="{{ path('auteur') }}">Retour</a>
+        {% else  %}
+
+            {% for result in results  %}
+
+                <h2>{{ result.nom }} qui a pour mot cle dans sa biographie :"{{ reserch }}"</h2>
+
+                <p>{{ result.biographie }}</p>
+
+            {% endfor %}
+
+        {% endif %}
+
+
+
+
+
+
+
+{% endblock %}

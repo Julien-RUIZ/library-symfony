@@ -1,0 +1,20 @@
+{% extends '@App/base/base.html.twig' %}
+
+
+
+{% block content %}
+
+    {% for livre in livres %}
+
+        <h2>{{ livre.titre }}</h2>
+        <h2>{{ livre.id }}</h2>
+
+        <a href="{{ path('suppr_livre', {'id': livre.id}) }}"><button>supprimer</button></a>
+    {% endfor %}
+
+
+
+
+
+
+{% endblock %}

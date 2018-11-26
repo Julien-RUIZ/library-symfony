@@ -1,0 +1,19 @@
+{% extends '@App/base/base.html.twig' %}
+
+
+
+{% block content %}
+    <a href="{{ path('livre_genre',{'genre': 'roman'}) }}"><button>Roman</button></a>
+
+    {% for result in results  %}
+
+        <p>{{ result.auteur  }}</p>
+
+
+
+
+    {% endfor %}
+
+
+
+{% endblock %}

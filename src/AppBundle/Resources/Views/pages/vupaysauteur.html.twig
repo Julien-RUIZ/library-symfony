@@ -1,0 +1,20 @@
+{% extends '@App/base/base.html.twig' %}
+
+
+
+{% block content %}
+
+
+    {% for result in results  %}
+
+        <h2>{{ result.nom  }}</h2>
+        <p>{{ result.biographie }}</p>
+
+
+
+
+    {% endfor %}
+
+    <a href="{{ path('auteur') }}">Retour au choix du pays</a>
+
+{% endblock %}
