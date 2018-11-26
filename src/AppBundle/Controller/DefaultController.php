@@ -180,13 +180,21 @@ class DefaultController extends Controller
                 $entityManager= $this->getDoctrine()->getManager();
 
 
+
+
+                $auteurRepository=$this->getDoctrine()->getRepository(Auteur::class);
+                $auteur=$auteurRepository->find(3);
+
+
+
+
                 $livre = new livre();
 
-                $livre->setTitre('Le Seigneur des anneaux');
-                $livre->setGenre('Roman fantasy');
+                $livre->setTitre('bob 2');
+                $livre->setGenre('gosse');
                 $livre->setFormat('poche');
-                $livre->setAuteur('J. R. R. Tolkien');
-                $livre->setnbPages('400');
+                $livre->setnbPages('200');
+                $livre->setAuteur($auteur);
 
 
 
@@ -204,7 +212,7 @@ class DefaultController extends Controller
 
 
             /**
-             * @Route("/ajoutauteur", name="auteur_ajout")
+             * @Route("/admin/ajoutauteur", name="auteur_ajout")
              */
             public function ajoutAuteurAction(){
         // getDoctrine va appeler la methode getManager
@@ -266,6 +274,64 @@ Fortement influencé par le théâtre Nô, Yeats traduit cette influence dans so
 
 
         }
+
+//--------------------------------------------------------------------------------------------------------------
+// la partie update livre
+
+        /**
+         * @Route("/admin/miseajourlivre/{id}", name="mise_a_jour_livre")
+         */
+
+        public function MiseajourLivreAction($id){
+            //on a besoin du repository Livre pour récupérer le contenu de la table Auteur
+            // pour récupérer ce repository :
+            // on appelle Doctrine (qui gère les répository)
+            // pour appeler la méthode getRepository qui récupère le repository Auteur (avec Auteur::class passé en parametre)
+            $repository = $this->getDoctrine()->getRepository(Livre::class);
+            $entityManager= $this->getDoctrine()->getManager();
+            $livre=$repository->find($id);
+
+
+            $livre->setGenre('version enfants');
+
+            //indique à Doctrine que vous souhaitez (éventuellement) enregistrer le produit
+            $entityManager->persist($livre);
+            //exécute réellement les requêtes
+            $entityManager->flush();
+
+            return $this->redirectToRoute('liste_livre');
+        }
+
+// la partie update auteur
+
+    /**
+     * @Route("/admin/miseajourauteur/{id}", name="mise_a_jour_auteur")
+     */
+
+    public function MiseajourauteurAction($id){
+        //on a besoin du repository Livre pour récupérer le contenu de la table Auteur
+        // pour récupérer ce repository :
+        // on appelle Doctrine (qui gère les répository)
+        // pour appeler la méthode getRepository qui récupère le repository Auteur (avec Auteur::class passé en parametre)
+        $repository = $this->getDoctrine()->getRepository(Auteur::class);
+        $entityManager= $this->getDoctrine()->getManager();
+        $auteur=$repository->find($id);
+
+
+        $auteur->setpays('pays magique');
+
+        //indique à Doctrine que vous souhaitez (éventuellement) enregistrer le produit
+        $entityManager->persist($auteur);
+        //exécute réellement les requêtes
+        $entityManager->flush();
+
+        return $this->redirectToRoute('auteur');
+    }
+
+//--------------------------------------------------------------------------------------------------------------
+//Partie relation
+
+
 
 
 

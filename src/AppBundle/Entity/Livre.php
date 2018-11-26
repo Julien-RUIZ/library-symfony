@@ -48,7 +48,7 @@ class Livre
     private $titre;
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\ManyToOne(targetEntity="Auteur")
      */
     private $auteur;
 
