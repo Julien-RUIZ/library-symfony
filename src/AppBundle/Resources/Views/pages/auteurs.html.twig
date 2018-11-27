@@ -7,6 +7,7 @@
     <a href="{{ path('pays_auteur',{'pays': 'Italie'}) }}"><button>Italie</button></a>
     <a href="{{ path('pays_auteur',{'pays': 'Russie'}) }}"><button>Russie</button></a>
     <a href="{{ path('pays_auteur',{'pays': 'France'}) }}"><button>France</button></a>
+    <a href="{{ path('pays_auteur',{'pays': 'Irlande'}) }}"><button>Irlande</button></a>
 </div>
     <br>
 
@@ -14,25 +15,19 @@
         <label for="research">Recherche par mot cle</label>
         <input name="research" type="text">
         <input type="submit">
-    </form>
+    </form><br>
+    <a href="{{ path('liste_livre') }}"><button>liste-livre</button></a>
 
 
 
 
-{#On realise une boucle auteurs pour faire apparaitre le nom de l'auteur grace a "auteur.nom" #}
+
+    {#On realise une boucle auteurs pour faire apparaitre le nom de l'auteur grace a "auteur.nom" #}
 {% for auteur in auteurs  %}
 {#path est l'action qui va nous renvoyer vers le nom de la route#}
     {#{'id': auteur.id}  c est id définit dans la route @route("auteur.{id}, auteur.id c est le numero de l'id dans la base de donnée#}
-
     <hr>
-
-
-
-
-
     <a href="{{ path('info_auteur', {'id': auteur.id}) }}"><h2>{{ auteur.nom }}</h2></a>
-
-
 
 {% endfor %}
 

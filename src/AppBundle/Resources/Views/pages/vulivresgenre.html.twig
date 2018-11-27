@@ -3,14 +3,13 @@
 
 
 {% block content %}
-    <a href="{{ path('livre_genre',{'genre': 'roman'}) }}"><button>Roman</button></a>
+    <a href="{{ path('admin/livre_genre',{'genre': 'roman'}) }}"><button>Roman</button></a>
+    <a href="{{ path('admin/livre_genre',{'genre': 'porno'}) }}"><button>porno</button></a>
+    <a href="{{ path('admin/livre_genre',{'genre': 'gosse'}) }}"><button>gosse</button></a>
 
     {% for result in results  %}
 
-        <p>{{ result.auteur  }}</p>
-
-
-
+        <p>{{ result.auteur.livre  }}</p>
 
     {% endfor %}
 

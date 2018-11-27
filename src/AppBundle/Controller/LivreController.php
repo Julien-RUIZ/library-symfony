@@ -13,7 +13,7 @@ class LivreController extends Controller
 {
 
     /**
-     * @Route("/admin/livres", name="liste_livre")
+     * @Route("/livres", name="liste_livre")
      */
     public function livrelistAction(){
 
@@ -26,12 +26,11 @@ class LivreController extends Controller
                 'livres' => $livres
             ]
         );
-
     }
 
 // les parties suivantes ont pour but de faire grace a des methode en répository, de faire du filtrage dans une base de donnée
     /**
-     * @Route("/livresgenre/{genre}", name="livre_genre")
+     * @Route("/admin/livresgenre/{genre}", name="livre_genre")
      */
     public function livresgenre($genre)
     {

@@ -29,6 +29,26 @@ use Doctrine\ORM\Mapping as ORM;
          */
         private $id;
 
+        /**
+         *@ORM\OneToMany(targetEntity="AppBundle\Entity\Livre", mappedBy="auteur")
+         */
+        private $livre;
+
+        /**
+         * @return mixed
+         */
+        public function getLivre()
+        {
+            return $this->livre;
+        }
+
+        /**
+         * @param mixed $livre
+         */
+        public function setLivre($livre)
+        {
+            $this->livre = $livre;
+        }
 
         /**
          * @ORM\Column(type="string")

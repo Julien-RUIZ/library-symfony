@@ -14,13 +14,6 @@ class AuteurController extends Controller
 {
 
 
-
-
-//----------------------------------------------------------------------------------------------------
-//----------------------------------AUTEUR-------------------------------------------------------------
-//----------------------------------------------------------------------------------------------------
-
-
 //Création d'une route pour afficher, a l'aide de la methode AuteursAction(), la liste des nom d'auteurs que nous allons avoir a l'écran
     /**
      * @Route("/auteurs", name="auteur")

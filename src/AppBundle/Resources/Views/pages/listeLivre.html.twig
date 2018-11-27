@@ -4,9 +4,15 @@
 
 {% block content %}
 
+
+    <a href="{{ path('auteur') }}"><button>retour au choix des auteurs</button></a>
+
+
+
     {% for livre in livres %}
 
         <h2>{{ livre.titre }}</h2>
+        <h4>le genre du livre est {{ livre.genre }}</h4>
             {% if livre.auteur %}
                 <h3>{{ livre.auteur.nom }}</h3>
             {% else %}
