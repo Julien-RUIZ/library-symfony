@@ -4,8 +4,10 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\Auteur;
 use AppBundle\Entity\Livre;
+use AppBundle\Form\AuteurType;
 use AppBundle\Repository\AuteurRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -170,7 +172,25 @@ Fortement influencé par le théâtre Nô, Yeats traduit cette influence dans so
 
 
 
+    /**
+     * @Route("formajoutauteur", name="form_ajout_auteur")
+     */
 
+    public function formAjoutauteurAction(){
+
+
+
+        $form=$this->createform(AuteurType::class, new Auteur())
+            ->add('save', SubmitType::class, array('label' => 'valide'));
+
+        return $this->render('@App/pages/formauteur.html.twig',
+            [
+                'formauteur' => $form->createView()
+            ]
+
+        );
+
+    }
 
 
 

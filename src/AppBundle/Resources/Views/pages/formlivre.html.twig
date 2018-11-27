@@ -1,0 +1,13 @@
+{% extends '@App/base/base.html.twig' %}
+
+
+{% block content %}
+
+<div class="offset-3 mt-3">
+{{ form(formlivre) }}
+
+    <br>
+    <a href="{{ path('auteur') }}"><button>retour au choix des auteurs</button></a>
+
+</div>
+{% endblock %}

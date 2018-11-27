@@ -14,11 +14,11 @@
         <h2>{{ livre.titre }}</h2>
 
         <h4>le genre du livre est {{ livre.genre }}</h4>
-            {% if livre.auteur %}
-                <h3>{{ livre.auteur.nom }}</h3>
-            {% else %}
-                <p>pas d'auteur défini</p>
-            {% endif %}
+            {#{% if livre.auteur %}#}
+                {#<h3>{{ livre.auteur.nom }}</h3>#}
+            {#{% else %}#}
+                {#<p>pas d'auteur défini</p>#}
+            {#{% endif %}#}
         <p>{{ livre.genre }}</p>
         <p>{{ livre.id }}</p>
 

@@ -4,7 +4,9 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\Auteur;
 use AppBundle\Entity\Livre;
+use AppBundle\Form\LivreType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -148,14 +150,25 @@ class LivreController extends Controller
     }
 
 
+//----------------------------------------------------------------------------------------------------------------
+
+    /**
+     * @Route("formajoutlivre", name="form_ajout_livre")
+     */
+
+    public function formAjoutLivreAction(){
 
 
 
+        $form=$this->createform(LivreType::class, new Livre())
+            ->add('save', SubmitType::class, array('label' => 'valide'));
 
+        return $this->render('@App/pages/formlivre.html.twig',
+        [
+            'formlivre' => $form->createView()
+        ]
 
+        );
 
-
-
-
-
+}
 }

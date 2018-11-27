@@ -47,10 +47,10 @@ class Livre
      */
     private $titre;
 
-    /** un join entre livre et auteur
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Auteur", inversedBy="livre")
-     */
-    private $auteur;
+    ///** un join entre livre et auteur
+     //* @ORM\ManyToOne(targetEntity="AppBundle\Entity\Auteur", inversedBy="livre")
+     //*/
+    //private $auteur;
 
     /**
      * @return mixed

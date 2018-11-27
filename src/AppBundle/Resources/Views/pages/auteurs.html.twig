@@ -5,6 +5,9 @@
 
 <a href="{{ path('liste_livre') }}"><button>liste-livre</button></a>
 <button id="boutonauteur">les auteur</button>
+
+    <a href="{{ path('form_ajout_livre') }}"> <button>formulaire livre</button></a>
+    <a href="{{ path('form_ajout_auteur') }}"> <button>formulaire auteur</button></a>
 <div id="lesauteurs">
     {#On realise une boucle auteurs pour faire apparaitre le nom de l'auteur grace a "auteur.nom" #}
 {% for auteur in auteurs  %}
