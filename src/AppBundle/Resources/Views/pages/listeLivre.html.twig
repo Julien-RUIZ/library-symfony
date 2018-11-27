@@ -12,6 +12,7 @@
     {% for livre in livres %}
 
         <h2>{{ livre.titre }}</h2>
+
         <h4>le genre du livre est {{ livre.genre }}</h4>
             {% if livre.auteur %}
                 <h3>{{ livre.auteur.nom }}</h3>
@@ -24,10 +25,6 @@
         <a href="{{ path('suppr_livre', {'id': livre.id}) }}"><button>supprimer</button></a>
         <a href="{{ path('mise_a_jour_livre', {'id': livre.id}) }}"><button>mise a jour</button></a>
     {% endfor %}
-
-
-
-
 
 
 {% endblock %}

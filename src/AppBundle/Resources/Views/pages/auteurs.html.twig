@@ -1,27 +1,11 @@
 {% extends '@App/base/base.html.twig' %}
 
 
-
 {% block content %}
-<div>
-    <a href="{{ path('pays_auteur',{'pays': 'Italie'}) }}"><button>Italie</button></a>
-    <a href="{{ path('pays_auteur',{'pays': 'Russie'}) }}"><button>Russie</button></a>
-    <a href="{{ path('pays_auteur',{'pays': 'France'}) }}"><button>France</button></a>
-    <a href="{{ path('pays_auteur',{'pays': 'Irlande'}) }}"><button>Irlande</button></a>
-</div>
-    <br>
 
-    <form action="{{ path('auteur_mot_cle') }}" method="get">
-        <label for="research">Recherche par mot cle</label>
-        <input name="research" type="text">
-        <input type="submit">
-    </form><br>
-    <a href="{{ path('liste_livre') }}"><button>liste-livre</button></a>
-
-
-
-
-
+<a href="{{ path('liste_livre') }}"><button>liste-livre</button></a>
+<button id="boutonauteur">les auteur</button>
+<div id="lesauteurs">
     {#On realise une boucle auteurs pour faire apparaitre le nom de l'auteur grace a "auteur.nom" #}
 {% for auteur in auteurs  %}
 {#path est l'action qui va nous renvoyer vers le nom de la route#}
@@ -30,5 +14,6 @@
     <a href="{{ path('info_auteur', {'id': auteur.id}) }}"><h2>{{ auteur.nom }}</h2></a>
 
 {% endfor %}
+</div>
 
 {% endblock %}
