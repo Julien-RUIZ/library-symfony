@@ -2,12 +2,51 @@
 
 
 {% block content %}
+    <h1>Formulaire Livre</h1>
+    <div class="offset-5 mt-5 formulaire">
 
-<div class="offset-3 mt-3">
-{{ form(formlivre) }}
+        {#affiche formulaire en un bloc#}
+        {#{{ form(formlivre) }}#}
 
-    <br>
-    <a href="{{ path('auteur') }}"><button>retour au choix des auteurs</button></a>
+        {#{{ form_start(formlivre) }}#}
+        {#{{ form_widget(formlivre) }}#}
+        {#{{ form_end(formlivre) }}#}
 
-</div>
+
+
+        {# exemple pour faire du css directement#}
+        {#{{ form_label(formCourses.prix) }}#}
+        {#{{ form_widget(formCourses.prix, {"attr" : {"class": "form-control"}}) }}#}
+
+
+        {{ form_start(formlivre) }}
+        <div class="bob">
+            {{ form_label(formlivre.genre) }}
+        </div>
+        {{ form_widget(formlivre.genre) }}
+        <div class="bob">
+            {{ form_label(formlivre.nbPages) }}
+        </div>
+        {{ form_widget(formlivre.nbPages) }}
+        <div class="bob">
+            {{ form_label(formlivre.format) }}
+        </div>
+        {{ form_widget(formlivre.format) }}
+        <div class="bob">
+            {{ form_label(formlivre.titre) }}
+        </div>
+        {{ form_widget(formlivre.titre) }}
+        <div id="valide">
+        {{ form_widget(formlivre.save) }}
+        </div>
+
+
+
+
+
+        {{ form_end(formlivre) }}
+        <br>
+        <a href="{{ path('auteur') }}"><button>retour au choix des auteurs</button></a>
+
+    </div>
 {% endblock %}

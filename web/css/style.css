@@ -3,3 +3,20 @@
     height: 100px;
     background-color: #66dd66;
 }
+.formulaire{
+    border:1px solid black;
+    width: 200px;
+    background-image: linear-gradient(to right, #ffffff, #d7d3e2, #b3a8c5, #937fa6, #755687);
+    padding: 10px;
+}
+
+.bob{
+    margin-top: 5px;
+    text-align: center;
+
+}
+
+#valide{
+    margin-top: 10px;
+
+}
