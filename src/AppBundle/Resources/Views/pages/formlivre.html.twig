@@ -31,11 +31,19 @@
         <div class="bob">
             {{ form_label(formlivre.format) }}
         </div>
+
+<div id="choix">
         {{ form_widget(formlivre.format) }}
+</div>
+
         <div class="bob">
             {{ form_label(formlivre.titre) }}
         </div>
         {{ form_widget(formlivre.titre) }}
+        <div class="bob">
+            {{ form_label(formlivre.auteur) }}
+        </div>
+        {{ form_widget(formlivre.auteur) }}
         <div id="valide">
         {{ form_widget(formlivre.save) }}
         </div>

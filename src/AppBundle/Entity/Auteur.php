@@ -29,9 +29,9 @@ use Doctrine\ORM\Mapping as ORM;
          */
         private $id;
 
-        ///**
-         //*@ORM\OneToMany(targetEntity="AppBundle\Entity\Livre", mappedBy="auteur")
-         //*/
+        /**
+         *@ORM\OneToMany(targetEntity="AppBundle\Entity\Livre", mappedBy="auteur")
+         */
         private $livre;
 
         /**
