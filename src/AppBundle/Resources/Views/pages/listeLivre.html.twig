@@ -3,7 +3,7 @@
 
 
 {% block content %}
-
+<div id="listelivre">
     {% for livre in livres %}
 
         <h2>{{ livre.titre }}</h2>
@@ -22,6 +22,6 @@
         <a href="{{ path('mise_a_jour_livre', {'id': livre.id}) }}"><button>mise a jour</button></a>
         <hr>
     {% endfor %}
-
+</div>
 
 {% endblock %}

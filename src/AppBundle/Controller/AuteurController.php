@@ -252,28 +252,38 @@ Fortement influencé par le théâtre Nô, Yeats traduit cette influence dans so
 
         $form->handleRequest($request);
 
-        if($form->isSubmitted() && $form->isValid()){
+        if($form->isSubmitted()){
+            //condition en isValid pour créé un flash info sur le bon enregistrement du formulaire
+            if ($form->isValid()){
+
+                    $auteur=$form->getData();
+                    $entityManager=$this->getDoctrine()->getManager();
 
 
-            $auteur=$form->getData();
-            $entityManager=$this->getDoctrine()->getManager();
+                    $entityManager->persist($auteur);
+                    $entityManager->flush();
+
+                    //c est pas notice, qu il va envoyer le message d'erreur
+                $this->addFlash("notice", "votre auteur est bien dans la base");
 
 
-            $entityManager->persist($auteur);
-            $entityManager->flush();
-            return $this->redirectToRoute('auteur');
 
+                    return $this->redirectToRoute('auteur');
+            //condition sinon (
+            } else {
+
+                //c est pas notice, qu il va envoyer le message d'erreur
+                    $this->addFlash("notice", "erreur");
+            }
         }
+                    return $this->render('@App/pages/formauteur.html.twig',
+                        [
+                            'formauteur' => $form->createView()
+                        ]
+
+                    );
 
 
-        else {
-            return $this->render('@App/pages/formauteur.html.twig',
-                [
-                    'formauteur' => $form->createView()
-                ]
-
-            );
-        }
     }
 
 

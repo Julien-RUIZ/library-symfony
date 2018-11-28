@@ -3,34 +3,25 @@
 
 
 {% block content %}
+<div id="defauteur">
+    {#Ici nous ne faisons qu'afficher le résultat#}
+        <h2>{{ auteur.nom }}</h2>
+        <p>Pays: {{ auteur.pays }}</p>
 
-{#Ici nous ne faisons qu'afficher le résultat#}
-    <h2>{{ auteur.nom }}</h2>
-    <p>Pays: {{ auteur.pays }}</p>
+        {% for livre in auteur.livre  %}
 
+            <p> livre: {{ livre.titre }}</p>
 
+        {% endfor %}
 
+    {# pour afficher la date au bon format nous utilisons un filtre, garce a "|" et date("d/m/y") #}
+            <p>Sa date de naissance est le {{ auteur.dateNaissance | date("d/m/y") }}, et il est mort le {{ auteur.dateMort | date("d/m/y")  }}</p>
 
+            <p>Avec pour Biographie {{ auteur.biographie }}</p>
 
-    {% for livre in auteur.livre  %}
-
-        <p> livre: {{ livre.titre }}</p>
-
-    {% endfor %}
-
-
-
-
-
-
-{# pour afficher la date au bon format nous utilisons un filtre, garce a "|" et date("d/m/y") #}
-        <p>Sa date de naissance est le {{ auteur.dateNaissance | date("d/m/y") }}, et il est mort le {{ auteur.dateMort | date("d/m/y")  }}</p>
-
-        <p>Avec pour Biographie {{ auteur.biographie }}</p>
-
-    <a href="{{ path('mise_a_jour_auteur', {'id': auteur.id}) }}"><button>mise a jour</button></a>
-    <a href="{{ path('suppr_auteur', {'id': auteur.id}) }}"><button>Suprimer</button></a>
-    <a href="{{ path('auteur') }}">retour au choix des auteurs</a>
-
+        <a href="{{ path('mise_a_jour_auteur', {'id': auteur.id}) }}"><button>mise a jour</button></a>
+        <a href="{{ path('suppr_auteur', {'id': auteur.id}) }}"><button>Suprimer</button></a>
+        <a href="{{ path('auteur') }}">retour au choix des auteurs</a>
+</div>
 
 {% endblock %}

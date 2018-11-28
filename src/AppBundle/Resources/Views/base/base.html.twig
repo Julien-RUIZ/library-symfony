@@ -16,7 +16,8 @@
 <body>
 
 <div class="container-fluid header">
-    <div class="row offset-5">
+    <h1>Auteurs & Livres</h1>
+    <div class="row offset-5 mY-3">
 
         <a href="{{ path('pays_auteur',{'pays': 'Italie'}) }}"><button>Italie</button></a>
         <a href="{{ path('pays_auteur',{'pays': 'Russie'}) }}"><button>Russie</button></a>
@@ -24,19 +25,28 @@
         <a href="{{ path('pays_auteur',{'pays': 'Irlande'}) }}"><button>Irlande</button></a>
     </div>
 </div>
-<div class="container-fluid ">
+{#----------Flash en symfony, voir le controleur auteur pour la création de formulaire-------#}
+{% for message in app.flashes('notice') %}
+    <div class="alert alert-notice">
+        {{ message }}
+    </div>
+{% endfor %}
+{#------------------------------------------#}
+
+<div class="container-fluid block ">
     <br>
-    <div class="row offset-3">
+    <div class="row offset-3 mb-3">
         <form action="{{ path('auteur_mot_cle') }}" method="get">
             <label for="research">Recherche par mot cle dans la bio d'un auteur</label>
             <input name="research" type="text">
             <input type="submit">
         </form><br>
     </div>
-    <div class="offset-4 menubouton">
-            <a href="{{ path('liste_livre') }}"><button>liste-livre</button></a>
-            <a href="{{ path('form_ajout_livre') }}"> <button>formulaire livre</button></a>
-            <a href="{{ path('form_ajout_auteur') }}"> <button>formulaire auteur</button></a>
+    <div class=" menubouton d-flex py-5">
+            <div><a href="{{ path('liste_livre') }}"><button>liste-livre</button></a></div>
+            <div><a href="{{ path('form_ajout_livre') }}"> <button>formulaire livre</button></a></div>
+            <div><a href="{{ path('form_ajout_auteur') }}"> <button>formulaire auteur</button></a></div>
+        <div><a href="{{ path('auteur') }}"><button>Les auteurs</button></a></div>
     </div>
 </div>
 <hr>

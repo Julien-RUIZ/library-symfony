@@ -5,7 +5,7 @@
 
 
 
-
+<div id="auteurs">
         {#On realise une boucle auteurs pour faire apparaitre le nom de l'auteur grace a "auteur.nom" #}
     {% for auteur in auteurs  %}
     {#path est l'action qui va nous renvoyer vers le nom de la route#}
@@ -14,6 +14,9 @@
         <a href="{{ path('info_auteur', {'id': auteur.id}) }}"><h2>{{ auteur.nom }}</h2></a>
 
     {% endfor %}
+</div>
+
+
 
 
 {% endblock %}

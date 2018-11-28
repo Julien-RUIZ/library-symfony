@@ -1,7 +1,10 @@
 .header{
     border:1px solid black;
-    height: 100px;
+
     background-color: #66dd66;
+}
+h1, h2, h3{
+    text-align: center;
 }
 .formulaire{
     border:1px solid black;
@@ -26,6 +29,22 @@
 }
 
 .menubouton{
-    border:1px solid black;
+    border:solid black;
+    border-width: 5px 1px 1px 1px;
     margin: auto;
+    width:900px;
+    display: flex;
+    justify-content: center;
+    background-image: linear-gradient(to right, #37dcdc, #4ec69f, #6eac64, #868e34, #976d18);
+
+}
+#auteurs{
+    text-align: center;
+}
+
+.block{
+    background-image: linear-gradient(to right, #ffffff, #d7d3e2, #b3a8c5, #937fa6, #755687);
+}
+#defauteur, #listelivre{
+    text-align: center;
 }
