@@ -1,19 +1,16 @@
 {% extends '@App/base/base.html.twig' %}
 
 
+
 {% block content %}
-
-
-
-
         {#On realise une boucle auteurs pour faire apparaitre le nom de l'auteur grace a "auteur.nom" #}
     {% for auteur in auteurs  %}
-    {#path est l'action qui va nous renvoyer vers le nom de la route#}
+        {#path est l'action qui va nous renvoyer vers le nom de la route#}
         {#{'id': auteur.id}  c est id définit dans la route @route("auteur.{id}, auteur.id c est le numero de l'id dans la base de donnée#}
         <hr>
         <a href="{{ path('info_auteur', {'id': auteur.id}) }}"><h2>{{ auteur.nom }}</h2></a>
 
     {% endfor %}
 
-
+    <a href="{{ path('auteur') }}"><button>retour au choix des auteurs</button></a>
 {% endblock %}

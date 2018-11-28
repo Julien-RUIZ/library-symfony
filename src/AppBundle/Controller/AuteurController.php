@@ -105,6 +105,44 @@ class AuteurController extends Controller
             ]
         );
     }
+    //--------------------------------------------------------------------------------------------------------------
+
+
+    // partie qui va nous permettre d'effacer une donnée
+
+
+    /**
+     * @Route("/admin/supprAuteur/{id}", name="suppr_auteur")
+     */
+    public function supprAuteurAction($id){
+
+        //on a besoin du repository Livre pour récupérer le contenu de la table Auteur
+        // pour récupérer ce repository :
+        // on appelle Doctrine (qui gère les répository)
+        // pour appeler la méthode getRepository qui récupère le repository Auteur (avec Auteur::class passé en parametre)
+        $repository = $this->getDoctrine()->getRepository(Auteur::class);
+
+        // getDoctrine va appeler la methode getManager
+        // get manager va prendre les données et les convertir en données sql
+        $entityManager= $this->getDoctrine()->getManager();
+
+        //on déclare la variable auteur en écrivant $id, car c est par l'id
+        $auteur=$repository->find($id);
+
+
+        //Comme on pouvait s'y attendre, la méthode remove () indique à Doctrine que vous souhaitez supprimer l'objet spécifié
+        // de la base de données. Cependant, la requête DELETE n'est exécutée que lorsque la méthode flush ()
+        // est appelée.
+        $entityManager->remove($auteur);
+        $entityManager->flush();
+
+        return $this->redirectToRoute('auteur');
+
+    }
+
+
+
+
 //--------------------------------------------------------------------------------------------------------------
 // partie qui va nous permettre d'enregistrer dans la base de donnée un nouveau auteur
 

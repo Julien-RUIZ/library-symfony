@@ -24,3 +24,8 @@
 #choix input{
     margin-left: 30px;
 }
+
+.menubouton{
+    border:1px solid black;
+    margin: auto;
+}

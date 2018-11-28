@@ -29,6 +29,7 @@
         <p>Avec pour Biographie {{ auteur.biographie }}</p>
 
     <a href="{{ path('mise_a_jour_auteur', {'id': auteur.id}) }}"><button>mise a jour</button></a>
+    <a href="{{ path('suppr_auteur', {'id': auteur.id}) }}"><button>Suprimer</button></a>
     <a href="{{ path('auteur') }}">retour au choix des auteurs</a>
 
 

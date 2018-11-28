@@ -24,14 +24,25 @@
         <a href="{{ path('pays_auteur',{'pays': 'Irlande'}) }}"><button>Irlande</button></a>
     </div>
 </div>
-<br>
-<div class="row offset-3">
-    <form action="{{ path('auteur_mot_cle') }}" method="get">
-        <label for="research">Recherche par mot cle</label>
-        <input name="research" type="text">
-        <input type="submit">
-    </form><br>
+<div class="container-fluid ">
+    <br>
+    <div class="row offset-3">
+        <form action="{{ path('auteur_mot_cle') }}" method="get">
+            <label for="research">Recherche par mot cle dans la bio d'un auteur</label>
+            <input name="research" type="text">
+            <input type="submit">
+        </form><br>
+    </div>
+    <div class="offset-4 menubouton">
+            <a href="{{ path('liste_livre') }}"><button>liste-livre</button></a>
+            <a href="{{ path('form_ajout_livre') }}"> <button>formulaire livre</button></a>
+            <a href="{{ path('form_ajout_auteur') }}"> <button>formulaire auteur</button></a>
+    </div>
 </div>
+<hr>
+
+
+
 
 {% block content %}{% endblock %}
 
