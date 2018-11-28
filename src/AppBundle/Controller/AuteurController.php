@@ -149,28 +149,58 @@ Fortement influencé par le théâtre Nô, Yeats traduit cette influence dans so
      * @Route("/admin/miseajourauteur/{id}", name="mise_a_jour_auteur")
      */
 
-    public function MiseajourauteurAction($id){
+    public function MiseajourauteurAction(Request $request,$id){
+
+
+
+
         //on a besoin du repository Livre pour récupérer le contenu de la table Auteur
         // pour récupérer ce repository :
         // on appelle Doctrine (qui gère les répository)
         // pour appeler la méthode getRepository qui récupère le repository Auteur (avec Auteur::class passé en parametre)
+
         $repository = $this->getDoctrine()->getRepository(Auteur::class);
-        $entityManager= $this->getDoctrine()->getManager();
+
+        //on déclare la variable auteur en écrivant $id, car c est par l'id
+
         $auteur=$repository->find($id);
 
 
-        $auteur->setpays('pays magique');
 
-        //indique à Doctrine que vous souhaitez (éventuellement) enregistrer le produit
-        $entityManager->persist($auteur);
-        //exécute réellement les requêtes
-        $entityManager->flush();
+        $form = $this->createform(AuteurType::class, $auteur);
+        //associe les données envoyé via le formulaire a mettre sur la variable $form, donc la variable $form contient bien le $°post[]
+        $form->handleRequest($request);
 
-        return $this->redirectToRoute('auteur');
+
+//on regarde si le formulaire a etait envoyé
+        if($form->isSubmitted() && $form->isValid()){
+
+            $auteur=$form->getData();
+            // getDoctrine va appeler la methode getManager
+            // get manager va prendre les données et les convertir en données sql
+            $entityManager=$this->getDoctrine()->getManager();
+
+            //indique à Doctrine que vous souhaitez (éventuellement) enregistrer le produit
+            $entityManager->persist($auteur);
+            //exécute réellement les requêtes
+            $entityManager->flush();
+
+            return $this->redirectToRoute('auteur');
+
+        }
+
+
+        else {
+            return $this->render('@App/pages/formauteur.html.twig',
+                [
+                    'formauteur' => $form->createView()
+                ]
+
+            );
+        }
     }
 
-
-
+//--------------------------------------------------------------------------------------------------------------
 
     /**
      * @Route("formajoutauteur", name="form_ajout_auteur")
@@ -180,8 +210,8 @@ Fortement influencé par le théâtre Nô, Yeats traduit cette influence dans so
 
 
 
-        $form=$this->createform(AuteurType::class, new Auteur())
-            ->add('save', SubmitType::class, array('label' => 'valide'));
+        $form=$this->createform(AuteurType::class, new Auteur());
+
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()){

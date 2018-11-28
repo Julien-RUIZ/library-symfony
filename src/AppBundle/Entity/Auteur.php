@@ -12,7 +12,7 @@ namespace AppBundle\Entity;
 
 //on vient importer le namespace en lui donnant un alias, donc on l'apperlera ORM
 use Doctrine\ORM\Mapping as ORM;
-
+use Symfony\Component\Validator\Constraints as Assert;
 //technique en annotation, ainsi on dit que la classe auteur est une entity et on lui donne un nom a la table
     /**
      * @ORM\Entity
@@ -52,6 +52,14 @@ use Doctrine\ORM\Mapping as ORM;
 
         /**
          * @ORM\Column(type="string")
+         * @Assert\Length(
+         *      min = 1,
+         *      max = 20,
+         *     minMessage = "trop court ",
+         *     maxMessage = "trop long ")
+         *
+         *
+         *
          */
         private $nom;
 
@@ -153,6 +161,12 @@ use Doctrine\ORM\Mapping as ORM;
 
         /**
          * @ORM\Column(type="text")
+         * @Assert\Length(
+         *      min = 1,
+         *      max = 300,
+         *     minMessage = "trop court ",
+         *     maxMessage = "trop long "
+         *  )
          */
         private $biographie;
 

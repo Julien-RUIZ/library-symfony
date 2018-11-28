@@ -22,8 +22,10 @@
         <p>{{ livre.genre }}</p>
         <p>{{ livre.id }}</p>
 
+
         <a href="{{ path('suppr_livre', {'id': livre.id}) }}"><button>supprimer</button></a>
         <a href="{{ path('mise_a_jour_livre', {'id': livre.id}) }}"><button>mise a jour</button></a>
+        <hr>
     {% endfor %}
 
 

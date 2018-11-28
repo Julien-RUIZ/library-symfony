@@ -129,24 +129,52 @@ class LivreController extends Controller
      * @Route("/admin/miseajourlivre/{id}", name="mise_a_jour_livre")
      */
 
-    public function MiseajourLivreAction($id){
+    public function MiseajourLivreAction(Request $request, $id)
+    {
+
         //on a besoin du repository Livre pour récupérer le contenu de la table Auteur
         // pour récupérer ce repository :
         // on appelle Doctrine (qui gère les répository)
         // pour appeler la méthode getRepository qui récupère le repository Auteur (avec Auteur::class passé en parametre)
         $repository = $this->getDoctrine()->getRepository(Livre::class);
-        $entityManager= $this->getDoctrine()->getManager();
-        $livre=$repository->find($id);
+        //on déclare la variable auteur en écrivant $id, car c est par l'id
+        $livre = $repository->find($id);
 
 
-        $livre->setGenre('version enfants');
 
-        //indique à Doctrine que vous souhaitez (éventuellement) enregistrer le produit
-        $entityManager->persist($livre);
-        //exécute réellement les requêtes
-        $entityManager->flush();
+        //
+        $form = $this->createform(LivreType::class, $livre);
+//associe les données envoyé via le formulaire a mettre sur la variable $form, donc la variable $form contient bien le $°post[]
+        $form->handleRequest($request);
 
-        return $this->redirectToRoute('liste_livre');
+
+        //on regarde si le formulaire a etait envoyé
+        if ($form->isSubmitted() && $form->isValid()) {
+
+
+            $livre = $form->getData();
+            // getDoctrine va appeler la methode getManager
+            // get manager va prendre les données et les convertir en données sql
+            $entityManager = $this->getDoctrine()->getManager();
+
+            //indique à Doctrine que vous souhaitez (éventuellement) enregistrer le produit
+            $entityManager->persist($livre);
+            //exécute réellement les requêtes
+            $entityManager->flush();
+
+            return $this->redirectToRoute('liste_livre');
+
+        } else {
+
+            return $this->render('@App/pages/formlivre.html.twig',
+                [
+                    'formlivre' => $form->createView(),
+
+                ]
+
+            );
+
+        }
     }
 
 

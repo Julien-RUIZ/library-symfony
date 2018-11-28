@@ -2,9 +2,59 @@
 
 
 {% block content %}
-<h1>Formulaire Auteur</h1>
+<h3>Formulaire Auteur</h3>
+
+
+
+
+
+
     <div class="offset-5 mt-5 formulaire">
-        {{ form(formauteur) }}
+
+        {{ form_start(formauteur) }}
+
+            <div class="bob">
+                {{ form_label(formauteur.nom) }}
+            </div>
+
+            {{ form_widget(formauteur.nom) }}
+
+
+            <div class="bob">
+                {{ form_label(formauteur.dateNaissance) }}
+            </div>
+
+            {{ form_widget(formauteur.dateNaissance) }}
+
+
+            <div class="bob">
+                {{ form_label(formauteur.dateMort) }}
+            </div>
+
+            {{ form_widget(formauteur.dateMort) }}
+
+
+            <div class="bob">
+                {{ form_label(formauteur.pays) }}
+            </div>
+
+            {{ form_widget(formauteur.pays) }}
+
+
+
+            <div class="bob">
+                {{ form_label(formauteur.biographie) }}
+            </div>
+
+            {{ form_widget(formauteur.biographie) }}
+
+            <div>
+                {{ form_widget(formauteur.save) }}
+            </div>
+
+
+        {{ form_end(formauteur) }}
+
 
         <br>
         <a href="{{ path('auteur') }}"><button>retour au choix des auteurs</button></a>

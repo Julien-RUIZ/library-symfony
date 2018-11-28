@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Livre
@@ -44,6 +45,11 @@ class Livre
 
     /**
      * @ORM\Column(type="string")
+     *  @Assert\Length(
+     *      min = 1,
+     *      max = 15,
+     *     minMessage = "trop court ",
+     *     maxMessage = "trop long ")
      */
     private $titre;
 
