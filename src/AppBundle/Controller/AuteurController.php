@@ -176,20 +176,36 @@ Fortement influencé par le théâtre Nô, Yeats traduit cette influence dans so
      * @Route("formajoutauteur", name="form_ajout_auteur")
      */
 
-    public function formAjoutauteurAction(){
+    public function formAjoutauteurAction(Request $request){
 
 
 
         $form=$this->createform(AuteurType::class, new Auteur())
             ->add('save', SubmitType::class, array('label' => 'valide'));
+        $form->handleRequest($request);
 
-        return $this->render('@App/pages/formauteur.html.twig',
-            [
-                'formauteur' => $form->createView()
-            ]
+        if($form->isSubmitted() && $form->isValid()){
 
-        );
 
+            $auteur=$form->getData();
+            $entityManager=$this->getDoctrine()->getManager();
+
+
+            $entityManager->persist($auteur);
+            $entityManager->flush();
+            return $this->redirectToRoute('auteur');
+
+        }
+
+
+        else {
+            return $this->render('@App/pages/formauteur.html.twig',
+                [
+                    'formauteur' => $form->createView()
+                ]
+
+            );
+        }
     }
 
 

@@ -156,19 +156,35 @@ class LivreController extends Controller
      * @Route("formajoutlivre", name="form_ajout_livre")
      */
 
-    public function formAjoutLivreAction(){
+    public function formAjoutLivreAction(Request $request){
 
 
 
         $form=$this->createform(LivreType::class, new Livre())
             ->add('save', SubmitType::class, array('label' => 'valide'));
 
+        $form->handleRequest($request);
+
+
+        if($form->isSubmitted() && $form->isValid()){
+
+
+            $livre=$form->getData();
+            $entityManager=$this->getDoctrine()->getManager();
+
+
+            $entityManager->persist($livre);
+            $entityManager->flush();
+            return $this->redirectToRoute('liste_livre');
+
+        }
+else{
         return $this->render('@App/pages/formlivre.html.twig',
         [
             'formlivre' => $form->createView()
         ]
 
         );
-
+}
 }
 }
