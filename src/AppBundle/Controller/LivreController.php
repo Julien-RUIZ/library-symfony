@@ -7,6 +7,7 @@ use AppBundle\Entity\Livre;
 use AppBundle\Form\LivreType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -15,7 +16,7 @@ class LivreController extends Controller
 {
 
     /**
-     * @Route("/livres", name="liste_livre")
+     * @Route("/", name="liste_livre")
      */
     public function livrelistAction(){
 
@@ -151,8 +152,34 @@ class LivreController extends Controller
         //on regarde si le formulaire a etait envoyé
         if ($form->isSubmitted() && $form->isValid()) {
 
-
             $livre = $form->getData();
+
+
+//-----------------Partie inscription de l image en base de donnée avec extension nom---------------------
+
+            $image = $livre->getImage();
+//va creer l image dans la base de donnée avec une extension
+            $imageName = md5(uniqid()).'.'.$image->guessExtension();
+//tente de creer la photo et la place dans le dossier créé par images directory(dans le config.yml
+            try {
+                $image->move(
+                    $this->getParameter('images_directory'),
+                    $imageName
+                );
+//sinon erreur
+            } catch (FileException $e) {
+                ('erreur');
+            }
+//recupere le nom et l'extension
+            $livre->setImage($imageName);
+
+//----------------------------------------------------------
+
+
+
+
+
+
             // getDoctrine va appeler la methode getManager
             // get manager va prendre les données et les convertir en données sql
             $entityManager = $this->getDoctrine()->getManager();
@@ -181,7 +208,7 @@ class LivreController extends Controller
 //----------------------------------------------------------------------------------------------------------------
 
     /**
-     * @Route("formajoutlivre", name="form_ajout_livre")
+     * @Route("/admin/formajoutlivre", name="form_ajout_livre")
      */
 
     public function formAjoutLivreAction(Request $request){
@@ -196,21 +223,37 @@ class LivreController extends Controller
 
         if($form->isSubmitted() && $form->isValid()){
 
-
+//-----------------Partie inscription de l image en base de donnée avec extension nom---------------------
             $livre=$form->getData();
-            $entityManager=$this->getDoctrine()->getManager();
+            $image = $livre->getImage();
+//va creer l image dans la base de donnée avec une extension
+            $imageName = md5(uniqid()).'.'.$image->guessExtension();
+//tente de creer la photoet la place dans le dossier créé par images directory(dans le config.yml
+            try {
+                $image->move(
+                    $this->getParameter('images_directory'),
+                    $imageName
+                );
+//sinon erreur
+            } catch (FileException $e) {
+                ('erreur');
+            }
+//recupere le nom de l'extension
+            $livre->setImage($imageName);
+//----------------------------------------------------------
 
+
+            $entityManager=$this->getDoctrine()->getManager();
 
             $entityManager->persist($livre);
             $entityManager->flush();
             return $this->redirectToRoute('liste_livre');
 
-        }
-else{
-        return $this->render('@App/pages/formlivre.html.twig',
-        [
-            'formlivre' => $form->createView()
-        ]
+        }else{
+            return $this->render('@App/pages/formlivre.html.twig',
+            [
+                'formlivre' => $form->createView()
+            ]
 
         );
 }

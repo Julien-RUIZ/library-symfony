@@ -30,6 +30,12 @@ class Livre
     private $genre;
 
     /**
+     * @ORM\Column(type="string", nullable=true)
+     *
+     */
+    private $image;
+
+    /**
      * @var int
      *
      * @ORM\Column(name="nbPages", type="integer")
@@ -47,7 +53,7 @@ class Livre
      * @ORM\Column(type="string")
      *  @Assert\Length(
      *      min = 1,
-     *      max = 15,
+     *      max = 100,
      *     minMessage = "trop court ",
      *     maxMessage = "trop long ")
      */
@@ -173,5 +179,28 @@ class Livre
     {
         return $this->format;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+    /**
+     * @param mixed $image
+     */
+    public function setImage($image)
+    {
+        $this->image = $image;
+    }
+
+
+
+
+
+
+
 }
 

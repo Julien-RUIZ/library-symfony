@@ -4,7 +4,24 @@
 
 {% block content %}
 <div id="listelivre">
+
+
+
     {% for livre in livres %}
+
+
+        {% if livre.image %}
+            <img src="{{ asset('uploads/images/' ~ livre.image) }}" alt="image">
+        {% else %}
+            <p>pas d'image</p>
+        {% endif %}
+
+
+
+
+
+
+
 
         <h2>{{ livre.titre }}</h2>
 

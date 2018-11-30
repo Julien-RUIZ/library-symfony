@@ -25,13 +25,13 @@
         <a href="{{ path('pays_auteur',{'pays': 'Irlande'}) }}"><button>Irlande</button></a>
     </div>
 </div>
-{#----------Flash en symfony, voir le controleur auteur pour la création de formulaire-------#}
+{#----------Flash en symfony, voir dans  le controleur la Route formauteur , partie qui va afficher un message si enregistrement ok ou non-------#}
 {% for message in app.flashes('notice') %}
     <div class="alert alert-notice">
         {{ message }}
     </div>
 {% endfor %}
-{#------------------------------------------#}
+{#-------------------------------------------------------------------------------------------#}
 
 <div class="container-fluid block ">
     <br>
