@@ -263,7 +263,7 @@ Fortement influencé par le théâtre Nô, Yeats traduit cette influence dans so
                     $entityManager->persist($auteur);
                     $entityManager->flush();
 
-//c est pas notice, qu il va envoyer le message d'erreur
+//c est par notice, qu il va envoyer le message d'erreur
                 $this->addFlash("notice", "votre auteur est bien dans la base");
 
 
@@ -272,7 +272,7 @@ Fortement influencé par le théâtre Nô, Yeats traduit cette influence dans so
             //condition sinon (
             } else {
 
-//c est pas notice, qu il va envoyer le message d'erreur dans la base
+//c est par notice, qu il va envoyer le message d'erreur dans la base
                     $this->addFlash("notice", "erreur");
             }
         }

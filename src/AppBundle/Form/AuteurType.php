@@ -26,15 +26,7 @@ class AuteurType extends AbstractType
             ->add('save', SubmitType::class, array('label' => 'valide'))
             ;
 
-
-
     }
-
-
-
-
-
-
 
     /**
      * {@inheritdoc}
