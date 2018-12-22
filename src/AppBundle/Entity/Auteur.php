@@ -30,7 +30,7 @@ use Symfony\Component\Validator\Constraints as Assert;
         private $id;
 
         /**
-         *@ORM\OneToMany(targetEntity="AppBundle\Entity\Livre", mappedBy="auteur")
+         * @ORM\OneToMany(targetEntity="AppBundle\Entity\Livre", mappedBy="auteur")
          */
         private $livre;
 

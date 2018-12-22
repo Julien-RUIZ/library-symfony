@@ -175,11 +175,6 @@ class LivreController extends Controller
 
 //----------------------------------------------------------
 
-
-
-
-
-
             // getDoctrine va appeler la methode getManager
             // get manager va prendre les données et les convertir en données sql
             $entityManager = $this->getDoctrine()->getManager();

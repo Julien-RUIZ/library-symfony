@@ -40,8 +40,6 @@ class LivreType extends AbstractType
             ->add('image',FileType::class)
             ->add('save', SubmitType::class, array('label' => 'valide'));
 
-
-
     }
 
 
