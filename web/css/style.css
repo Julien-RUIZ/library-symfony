@@ -8,9 +8,11 @@ h1, h2, h3{
 }
 .formulaire{
     border:1px solid black;
-    width: 200px;
+    width: 400px;
     background-image: linear-gradient(to right, #ffffff, #d7d3e2, #b3a8c5, #937fa6, #755687);
     padding: 10px;
+    text-align: center;
+    margin-bottom: 40px;
 }
 
 .bob{

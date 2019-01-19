@@ -57,9 +57,6 @@ use Symfony\Component\Validator\Constraints as Assert;
          *      max = 20,
          *     minMessage = "trop court ",
          *     maxMessage = "trop long ")
-         *
-         *
-         *
          */
         private $nom;
 

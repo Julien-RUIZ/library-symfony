@@ -20,46 +20,39 @@
 
 
         {{ form_start(formlivre) }}
-        <div class="bob">
+        <div class="form">
             {{ form_label(formlivre.genre) }}
         </div>
         {{ form_widget(formlivre.genre) }}
-        <div class="bob">
+        <div class="form">
             {{ form_label(formlivre.nbPages) }}
         </div>
         {{ form_widget(formlivre.nbPages) }}
-        <div class="bob">
+        <div class="form">
             {{ form_label(formlivre.format) }}
         </div>
 
-<div id="choix">
+        <div id="choix">
         {{ form_widget(formlivre.format) }}
-</div>
-
-        <div class="bob">
+        </div>
+        <div class="form">
             {{ form_label(formlivre.titre) }}
         </div>
         {{ form_widget(formlivre.titre) }}
 
-        <div class="bob">
+        <div class="form">
             {{ form_label(formlivre.auteur) }}
         </div>
         {{ form_widget(formlivre.auteur) }}
 
-        <div class="bob">
+        <div class="form">
             {{ form_label(formlivre.image) }}
         </div>
         {{ form_widget(formlivre.image) }}
 
-
         <div id="valide">
         {{ form_widget(formlivre.save) }}
         </div>
-
-
-
-
-
         {{ form_end(formlivre) }}
         <br>
         <a href="{{ path('auteur') }}"><button>retour au choix des auteurs</button></a>

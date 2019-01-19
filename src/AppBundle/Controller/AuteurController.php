@@ -189,21 +189,12 @@ Fortement influencé par le théâtre Nô, Yeats traduit cette influence dans so
 
     public function MiseajourauteurAction(Request $request,$id){
 
-
-
-
-        //on a besoin du repository Livre pour récupérer le contenu de la table Auteur
         // pour récupérer ce repository :
         // on appelle Doctrine (qui gère les répository)
         // pour appeler la méthode getRepository qui récupère le repository Auteur (avec Auteur::class passé en parametre)
-
         $repository = $this->getDoctrine()->getRepository(Auteur::class);
-
         //on déclare la variable auteur en écrivant $id, car c est par l'id
-
         $auteur=$repository->find($id);
-
-
 
         $form = $this->createform(AuteurType::class, $auteur);
         //associe les données envoyé via le formulaire a mettre sur la variable $form, donc la variable $form contient bien le $°post[]
@@ -222,11 +213,8 @@ Fortement influencé par le théâtre Nô, Yeats traduit cette influence dans so
             $entityManager->persist($auteur);
             //exécute réellement les requêtes
             $entityManager->flush();
-
             return $this->redirectToRoute('auteur');
-
         }
-
 
         else {
             return $this->render('@App/pages/formauteur.html.twig',

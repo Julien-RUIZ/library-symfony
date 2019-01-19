@@ -114,8 +114,8 @@ class LivreController extends Controller
         $livre=$repository->find($id);
 
 
-        //Comme on pouvait s'y attendre, la méthode remove () indique à Doctrine que vous souhaitez supprimer l'objet spécifié
-        // de la base de données. Cependant, la requête DELETE n'est exécutée que lorsque la méthode flush ()
+        //La méthode remove() indique à Doctrine que vous souhaitez supprimer l'objet spécifié
+        // de la base de données. Cependant, la requête DELETE n'est exécutée que lorsque la méthode flush()
         // est appelée.
         $entityManager->remove($livre);
         $entityManager->flush();
@@ -174,6 +174,11 @@ class LivreController extends Controller
             $livre->setImage($imageName);
 
 //----------------------------------------------------------
+
+
+
+
+
 
             // getDoctrine va appeler la methode getManager
             // get manager va prendre les données et les convertir en données sql
